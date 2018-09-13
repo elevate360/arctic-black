@@ -1,0 +1,233 @@
+/* Slider */
+.slick-slider {
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	-webkit-tap-highlight-color: transparent;
+	&:hover,
+	&:focus {
+		.arctic-slick-prev,
+		.arctic-slick-next {
+			opacity: 1;
+		}
+
+		.arctic-slick-prev {
+			left: .5rem;
+		}
+
+		.arctic-slick-next {
+			right: .5rem;
+		}
+
+	}
+}
+.slick-list {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	margin: 0;
+	padding: 0;
+
+	&:focus {
+		outline: none;
+	}
+
+	&.dragging {
+		cursor: pointer;
+		cursor: hand;
+	}
+}
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+	position: relative;
+	left: 0;
+	top: 0;
+	display: block;
+
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	.slick-loading & {
+		visibility: hidden;
+	}
+}
+.slick-slide {
+	float: left;
+	height: 100%;
+	min-height: 1px;
+	[dir="rtl"] & {
+		float: right;
+	}
+	img {
+		display: block;
+	}
+	&.slick-loading img {
+		display: none;
+	}
+
+	display: none;
+
+	&.dragging img {
+		pointer-events: none;
+	}
+
+	.slick-initialized & {
+		display: block;
+	}
+
+	.slick-loading & {
+		visibility: hidden;
+	}
+
+	.slick-vertical & {
+		display: block;
+		height: auto;
+		border: 1px solid transparent;
+	}
+}
+.slick-arrow.slick-hidden {
+	display: none;
+}
+
+// Default Variables
+
+// Slick icon entity codes outputs the following
+// "\2190" outputs ascii character "←"
+// "\2192" outputs ascii character "→"
+// "\2022" outputs ascii character "•"
+
+$slick-font-path: "../css/css/font-awesome/" !default;
+$slick-font-family: "FontAwesome" !default;
+$slick-loader-path: "assets/js/slick/" !default;
+$slick-arrow-color: #fff !default;
+$slick-dot-color: #fff !default;
+$slick-dot-color-active: #fff !default;
+$slick-prev-character: "\f053" !default;
+$slick-next-character: "\f054" !default;
+$slick-dot-character: "\f111" !default;
+$slick-dot-size: 16px !default;
+$slick-opacity-default: 1 !default;
+$slick-opacity-on-hover: 0.75 !default;
+$slick-opacity-not-active: 0.25 !default;
+
+@function slick-image-url($url) {
+	@if function-exists(image-url) {
+		@return image-url($url);
+	}
+	@else {
+		@return url($slick-loader-path + $url);
+	}
+}
+
+/* Arrows */
+.arctic-slick-prev,
+.arctic-slick-next {
+	background-color: #fff;
+	position: absolute;
+	display: block;
+	font-size: 0px;
+	cursor: pointer;
+	margin-top: -1rem;
+	top: 50%;
+	padding: 0;
+	border: none;
+	outline: none;
+	width: 2rem;
+	height: 2rem;
+	z-index: 1;
+	opacity: 0;
+	box-shadow: none;
+	border-radius: 2rem;
+	transition: all ease-in-out .25s;
+	.icon-stroke {
+		stroke: $color__text-main;
+		margin: 0!important;
+	}
+	&:hover {
+		opacity: 1;
+		outline: none;
+		box-shadow: none;
+	}
+	&.slick-disabled:before {
+		opacity: $slick-opacity-not-active;
+	}
+}
+
+.arctic-slick-prev {
+	left: -1rem;
+}
+
+.arctic-slick-next {
+	right: -1rem;
+}
+
+/* Dots */
+.arctic-slick-dots {
+	position: absolute;
+	bottom: 1rem;
+	left: 0;
+	list-style: none;
+	display: block;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	z-index: 1;
+	li {
+		position: relative;
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		margin: 0 5px;
+		padding: 0;
+		cursor: pointer;
+		button {
+			border: 0;
+			background: #fff;
+			display: block;
+			height: 1rem;
+			width: 1rem;
+			outline: none;
+			line-height: 0px;
+			font-size: 0px;
+			color: transparent;
+			padding: 5px;
+			cursor: pointer;
+			box-shadow: none;
+			border-radius: 1rem;
+			opacity: $slick-opacity-not-active;
+			&:hover,
+			&:focus {
+				outline: none;
+				opacity: $slick-opacity-on-hover;
+			}
+		}
+		&.slick-active button {
+			color: $slick-dot-color-active;
+			opacity: $slick-opacity-default;
+		}
+	}
+}
