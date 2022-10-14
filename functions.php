@@ -92,6 +92,118 @@ function arctic_black_setup() {
 	// Gutenberg
 	add_theme_support( 'align-wide' );
 
+	// Default block styles
+	add_theme_support( 'wp-block-styles' );
+
+	// Block color Palettes
+	add_theme_support( 'editor-color-palette', array(
+		array(
+				'name'  => esc_attr__( 'strong magenta', 'arctic-black' ),
+				'slug'  => 'strong-magenta',
+				'color' => '#a156b4',
+		),
+		array(
+				'name'  => esc_attr__( 'light grayish magenta', 'arctic-black' ),
+				'slug'  => 'light-grayish-magenta',
+				'color' => '#d0a5db',
+		),
+		array(
+				'name'  => esc_attr__( 'very light gray', 'arctic-black' ),
+				'slug'  => 'very-light-gray',
+				'color' => '#eee',
+		),
+		array(
+				'name'  => esc_attr__( 'very dark gray', 'arctic-black' ),
+				'slug'  => 'very-dark-gray',
+				'color' => '#444',
+		),
+	));
+
+	// Block gradient presets
+	add_theme_support(
+    'editor-gradient-presets',
+    array(
+        array(
+            'name'     => esc_attr__( 'Vivid cyan blue to vivid purple', 'arctic-black' ),
+            'gradient' => 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+            'slug'     => 'vivid-cyan-blue-to-vivid-purple'
+        ),
+        array(
+            'name'     => esc_attr__( 'Vivid green cyan to vivid cyan blue', 'arctic-black' ),
+            'gradient' => 'linear-gradient(135deg,rgba(0,208,132,1) 0%,rgba(6,147,227,1) 100%)',
+            'slug'     =>  'vivid-green-cyan-to-vivid-cyan-blue',
+        ),
+        array(
+            'name'     => esc_attr__( 'Light green cyan to vivid green cyan', 'arctic-black' ),
+            'gradient' => 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
+            'slug'     => 'light-green-cyan-to-vivid-green-cyan',
+        ),
+        array(
+            'name'     => esc_attr__( 'Luminous vivid amber to luminous vivid orange', 'arctic-black' ),
+            'gradient' => 'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
+            'slug'     => 'luminous-vivid-amber-to-luminous-vivid-orange',
+        ),
+        array(
+            'name'     => esc_attr__( 'Luminous vivid orange to vivid red', 'arctic-black' ),
+            'gradient' => 'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
+            'slug'     => 'luminous-vivid-orange-to-vivid-red',
+        ),
+    )
+	);
+
+	// Block font sizes
+	add_theme_support( 'editor-font-sizes', array(
+    array(
+        'name' => esc_attr__( 'Small', 'arctic-black' ),
+        'size' => 12,
+        'slug' => 'small'
+    ),
+    array(
+        'name' => esc_attr__( 'Regular', 'arctic-black' ),
+        'size' => 16,
+        'slug' => 'regular'
+    ),
+    array(
+        'name' => esc_attr__( 'Large', 'arctic-black' ),
+        'size' => 36,
+        'slug' => 'large'
+    ),
+    array(
+        'name' => esc_attr__( 'Huge', 'arctic-black' ),
+        'size' => 50,
+        'slug' => 'huge'
+    )
+) );
+
+	// Block based template parts
+	add_theme_support( 'block-template-parts' );
+
+	// register_block_style 
+	register_block_style(
+		'core/quote',
+		array(
+			'name'         => 'blue-quote',
+			'label'        => __( 'Blue Quote', 'arctic-black' ),
+			'is_default'   => true,
+			'inline_style' => '.wp-block-quote.is-style-blue-quote { color: blue; }',
+		)
+	);
+
+	// register_block_pattern
+	register_block_pattern(
+		'wpdocs/my-example',
+		array(
+			'title'         => __( 'My First Block Pattern', 'arctic-black' ),
+			'description'   => _x( 'This is my first block pattern', 'Block pattern description', 'arctic-black' ),
+			'content'       => '<!-- wp:paragraph --><p>A single paragraph block style</p><!-- /wp:paragraph -->',
+			'categories'    => array( 'text' ),
+			'keywords'      => array( 'cta', 'demo', 'example' ),
+			'viewportWidth' => 800,
+		)
+	);
+
+	add_theme_support( "responsive-embeds" );
+	add_theme_support( "align-wide" );
 }
 endif;
 add_action( 'after_setup_theme', 'arctic_black_setup' );

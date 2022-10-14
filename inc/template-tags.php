@@ -268,7 +268,7 @@ function arctic_black_do_footer_copyright(){
 	if ( get_theme_mod( 'theme_designer', true ) ) {
 		echo '<div class="site-designer">';
 		// Translators: %1$s: Theme designer site link
-		echo sprintf( esc_html__( 'Theme design by %1$s.', 'arctic-black' ), '<a href="'. esc_url( 'https://elevate360.com.au/' ) .'">Elevate360</a>' ); // WPCS: XSS OK.
+		echo sprintf( esc_html__( 'Theme design by %1$s.', 'arctic-black' ), '<a href="'. esc_url( 'https://cockatoo.com.au/' ) .'">Cockatoo</a>' ); // WPCS: XSS OK.
 		echo '</div>';
 	}
 

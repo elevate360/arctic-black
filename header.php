@@ -20,6 +20,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <div id="page" class="site">
 
 	<?php if( has_nav_menu( 'menu-1' ) ) :?>
